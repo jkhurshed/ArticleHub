@@ -1,24 +1,17 @@
-<?php
+<?php 
 
-try{
+	$DB_HOST = 'localhost';
+	$DB_USER = 'admin';
+	$DB_PASSWORD = 'testpass';
+	$DB_NAME = 'compose';
 
-    $host = 'localhost';
-    $db   = 'library';
-    $user = 'testuser';
-    $pass = 'test';
-    $port = "3306";
-    $charset = 'utf8';
+    $db = new mysqli($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
     
-    $options = [
-        \PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION,
-        \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
-        \PDO::ATTR_EMULATE_PREPARES   => false,
-    ];
-
-    $dsn = "mysql:host=$host;dbname=$db;charset=$charset;port=$port";
-    $db = new \PDO($dsn, $user, $pass, $options);
-    // echo "Successfully";
-    
-} catch(PDOException $e) {
-    echo $e->getMessage;
-}
+    // Check connection
+    if ($db -> connect_errno) {
+      echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+      exit();
+    } else {
+        echo "Connection successfully!";
+    }
+?> 

@@ -29,7 +29,7 @@ include_once("includes/db.php");
 	<div class="container">
 		<!-- row -->
 		<div class="row">
-			<?php if (!isset($_POST['name'])) : ?>
+			<?php if (!isset($_POST['title'])) : ?>
 				<div class="col-md-5 col-md-offset-1">
 					<div class="section-row">
 						<h3>Add category</h3>
@@ -50,55 +50,44 @@ include_once("includes/db.php");
 					</div>
 				</div>
 			<?php else : ?>
+			
+				<?php 
 
-				<?php
-				if (isset($_POST['title'])) $title = $_POST['title'];
-                if (isset($_POST['title'])) {
-                    $title = $_POST['title'];
+					if (isset($_POST['title'])) {
+						
+						// print_r($_POST);
+						// exit;
+						
+						try {
+							$sql = 'INSERT INTO category(title) VALUES(?)';
 
-                    if (!empty($title)) {
-                        try {
-							$title = $_POST['title'];
+							// if($db->query($sql)) {
+							// 	echo 'Ok';
+							// 	exit;
 
-                            $query = "INSERT INTO category (title) VALUES (:title)";
+							// }
 
-                            $sql = $db->prepare($query);
+							$stmt = $db->prepare($sql);
+							$stmt->bind_param('s', $_POST['title']);
+									
+							$stmt->execute();
+	
+							$effected_rows = $stmt->effected_rows;
 
-                            $data = [
-								'title' => $title
-							];
+							$stmt->close();
+							$db->close();
 
-                            $sql->execute($data);
-
-                            echo "Ok";
-                            echo "<br>";
-
-                            $sql = "SELECT * FROM category";
-                            $result = $db->query($sql);
-
-                            debug($result);
+							header("Location:http://localhost:8080/category.php");
+							
+						} catch (Exception $e) {
+							echo $e->getMessage();
+						}
 
 
-                            while ($row = $result->fetch()) {
-                                debug($row);
-                            }
+					}
 
-                            debug($row);
-                            echo "record success";
-
-                        } catch (PDOException $e) {
-                            echo $e->getMessage();
-                        }
-				    } else {
-					echo "Fill the form correctly.";
-				    }
-                } else {
-                    echo "Title not submitted.";
-                }
 				?>
-
 			<?php endif; ?>
-
 		</div>
 		<!-- /row -->
 	</div>

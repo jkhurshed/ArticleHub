@@ -46,14 +46,14 @@ include_once("includes/db.php");
 							$sql = "SELECT * FROM category";
 							$result = $db->query($sql);
 
-							while ($row = $result->fetch()) {
+							while ($row = $result->fetch_assoc()) {
 								echo '<tr>';
 								echo '<td>' . $row['id'] . '</td>';
 								echo '<td>' . $row['title'] . '</td>';
                                 echo '<td><a href="/update_category_form.php?id=' . $row['id'] . '">Редактировать</a> | <a href="/delete_category.php?id=' . $row['id'] . '">Удалить</a></td>';
 								echo '</tr>';
 							}
-						} catch (PDOException $e) {
+						} catch (mysqli_sql_exception $e) {
 							echo $e->getMessage();
 						}
 						?>
