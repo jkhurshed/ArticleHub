@@ -13,7 +13,7 @@ include_once("../../includes/db.php");
 			<div class="col-md-10">
 				<ul class="page-header-breadcrumb">
 					<li><a href="/">Home</a></li>
-					<li><a href="/category.php">Categories</a></li>
+					<li><a href="category.php">Categories</a></li>
 					<li>Edit categories</li>
 				</ul>
 				<h1>Edit category</h1>
@@ -37,19 +37,20 @@ include_once("../../includes/db.php");
 
 				if (!empty($_GET['id'])) {
 
-
 					try {
 						$query = "SELECT id, title FROM category WHERE id = ?";
 
 						$sql = $db->prepare($query);
 
 						$sql->bind_param('i', $_GET['id']);
-						if ($sql->execute()) {
-							$sql->bind_result($id, $title);
 
-							if ($sql->num_rows > 0) {
-							$row = $sql->fetch_assoc();
+						if ($sql->execute()) {
+							$result = $sql->get_result();
+
+							if ($result->num_rows > 0) {
+							$row = $result->fetch_assoc();
 							echo "ID: $id, Title: $title"; ?>
+							
 							<div class="col-md-5 col-md-offset-1">
 								<div class="section-row">
 									<h3>Edit category</h3>
@@ -75,7 +76,7 @@ include_once("../../includes/db.php");
 							echo "No records found for the specified ID";
 						}
 					} else {
-						echo "Error executing the query";
+						echo "Error executing the query" . $db->error . "sql error: " . $sql->error;
 					}
 					$sql->close();
 					$db->close();

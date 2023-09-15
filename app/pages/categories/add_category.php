@@ -1,6 +1,6 @@
 <?php
-include_once("includes/functions.php");
-include_once("includes/db.php");
+include_once("../../functions.php");
+include_once("../../includes/db.php");
 
 ?>
 
@@ -11,7 +11,7 @@ include_once("includes/db.php");
 			<div class="col-md-10">
 				<ul class="page-header-breadcrumb">
 					<li><a href="/">Home</a></li>
-					<li><a href="/category.php">Categories</a></li>
+					<li><a href="category.php">Categories</a></li>
 					<li>Add categories</li>
 				</ul>
 				<h1>Add category</h1>
@@ -77,7 +77,7 @@ include_once("includes/db.php");
 							$stmt->close();
 							$db->close();
 
-							header("Location:http://localhost:8080/category.php");
+							header("Location: category.php");
 							exit;
 							
 						} catch (Exception $e) {
