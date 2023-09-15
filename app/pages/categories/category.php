@@ -1,8 +1,9 @@
 <?php
 // подключение необходимых файлов обработчиков
-include_once("includes/functions.php");
+include_once("/home/khurshed/Desktop/code/php/compose-project/app/includes/functions.php");
 // include_once("includes/session.php");
-include_once("includes/db.php");
+include_once("/home/khurshed/Desktop/code/php/compose-project/app/includes/db.php");
+
 
 ?>
 
@@ -12,7 +13,7 @@ include_once("includes/db.php");
 		<div class="row">
 			<div class="col-md-10">
 				<ul class="page-header-breadcrumb">
-					<li><a href="/">Home</a></li>
+					<li><a href="">Home</a></li>
 					<li>Categories</li>
 				</ul>
 				<h1>Categories</h1>
@@ -50,10 +51,10 @@ include_once("includes/db.php");
 								echo '<tr>';
 								echo '<td>' . $row['id'] . '</td>';
 								echo '<td>' . $row['title'] . '</td>';
-                                echo '<td><a href="/update_category_form.php?id=' . $row['id'] . '">Редактировать</a> | <a href="/delete_category.php?id=' . $row['id'] . '">Удалить</a></td>';
+                                echo '<td><a href="update_category_form.php?id=' . $row['id'] . '">Update</a> | <a href="delete_category.php?id=' . $row['id'] . '">Delete</a></td>';
 								echo '</tr>';
 							}
-						} catch (mysqli_sql_exception $e) {
+						} catch (Exception $e) {
 							echo $e->getMessage();
 						}
 						?>

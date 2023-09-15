@@ -78,6 +78,7 @@ include_once("includes/db.php");
 							$db->close();
 
 							header("Location:http://localhost:8080/category.php");
+							exit;
 							
 						} catch (Exception $e) {
 							echo $e->getMessage();
