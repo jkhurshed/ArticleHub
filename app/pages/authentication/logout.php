@@ -6,7 +6,7 @@ if(isset($_GET["logout"])) {
     unset($_SESSION["id"]);
     unset($_SESSION["id"]);
     unset($_SESSION["login"]);
-    header("Location:http://localhost:8080/login.php");
+    header("Location: login.php");
 }
 ?>
-<a href="?logout">Выйти</a>
+<a href="?logout">Logout</a>

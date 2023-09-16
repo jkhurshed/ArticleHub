@@ -4,7 +4,8 @@ if (session_id() == "") {
 }
  
 if (!isset($_SESSION["id"])) {
-    header("Location:http://localhost:8080/category.php");
+    header("Location: ../pages/categories/category.php");
+    echo "success!!!";
     exit;
 }
 ?>

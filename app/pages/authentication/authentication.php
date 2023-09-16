@@ -1,8 +1,8 @@
 <?php
 
 
-include_once("includes/db.php");
-include_once("includes/functions.php");
+include_once("../../includes/db.php");
+include_once("../../includes/functions.php");
 
 if (session_id() == "") {
     session_start();
@@ -32,7 +32,7 @@ if (!empty($login) && !empty($password)) {
         $sql->bind_param("s", $login);
 
         $sql->execute();
-        $result = $db->get_result();
+        $result = $sql->get_result();
 
         if ($result->num_rows > 0) {
 
@@ -53,12 +53,13 @@ if (!empty($login) && !empty($password)) {
                     
                     //добавление куки
                     setcookie('sessionId', $_SESSION["id"], time() + (86400 * 30));
+                    echo "ok";
 
                     // debug($remember, true);
                 }
 
 
-                header("Location: add_category.php");
+                header("Location: ../../main.php");
                 exit;
             }
 
@@ -97,5 +98,6 @@ if (!empty($login) && !empty($password)) {
 }
 
 header("Location: login.php");
+
 $db->close();
 ?>

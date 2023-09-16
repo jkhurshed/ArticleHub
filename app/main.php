@@ -1,3 +1,6 @@
+<?php
+include_once("includes/db.php");
+?>
 <!DOCTYPE html>
 <html lang="ru">
 	<head>
@@ -42,13 +45,3 @@
 		</style>
 	</body>
 </html>
-<?php
-
-    try {
-        $con = new PDO("mysql:host=localhost;port=3306;dbname=compose", "admin", "testpass");
-        echo "Ok";
-    } catch(PDOException $e) {
-        echo $e->getMessage();
-    }
-    //phpinfo();
-?>

@@ -5,12 +5,12 @@ if (session_id() == "") {
 }
 
 if (isset($_SESSION["id"])) {
-	header("Location: index.php");
+	header("Location: ../../main.php");
 	exit;
 }
 
-include_once("includes/db.php");
-include_once("includes/functions.php");
+include_once("../../includes/db.php");
+include_once("../../includes/functions.php");
 ?>
 
 <!-- metanit.com/php/mysql/2.1.php -->
@@ -23,7 +23,7 @@ include_once("includes/functions.php");
 		<div class="row">
 			<div class="col-md-10">
 				<ul class="page-header-breadcrumb">
-					<li><a href="index.html">Home</a></li>
+					<li><a href="main.php">Home</a></li>
 					<li>Авторизация</li>
 				</ul>
 				<h1>Авторизация</h1>
@@ -57,7 +57,7 @@ include_once("includes/functions.php");
 						// echo password_verify($password, $passwordHash);
 						?>
 
-						<form action="auth.php" method="post">
+						<form action="authentication.php" method="post">
 							<div class="row">
 								<div class="col-md-7">
 									<div class="form-group">

@@ -35,7 +35,7 @@ include_once("/home/khurshed/Desktop/code/php/compose-project/app/includes/db.ph
 				<div class="section-row">
 					<h3>Categories</h3>
 
-					<a href="/add_category.php">Add category</a>
+					<a href="add_category.php">Add category</a>
 
 					<table border="1" width="100%">
 						<tr>

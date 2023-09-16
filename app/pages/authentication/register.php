@@ -8,7 +8,7 @@
     <h2>Registration Form</h2>
     <form action="register_process.php" method="post">
         <label for="fullname">Full Name:</label>
-        <input type="text" name="fullname" id="fullname" required><br><br>
+        <input type="text" name="fio" id="fio" required><br><br>
 
         <label for="login">Username:</label>
         <input type="text" name="login" id="login" required><br><br>
