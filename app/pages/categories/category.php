@@ -1,8 +1,8 @@
 <?php
 // подключение необходимых файлов обработчиков
-include_once("/home/khurshed/Desktop/code/php/compose-project/app/includes/functions.php");
+include_once("../../includes/functions.php");
 // include_once("includes/session.php");
-include_once("/home/khurshed/Desktop/code/php/compose-project/app/includes/db.php");
+include_once("../../includes/db.php");
 
 
 ?>
