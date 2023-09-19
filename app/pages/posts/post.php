@@ -1,8 +1,8 @@
 <?php
 // подключение необходимых файлов обработчиков
-include_once("includes/functions.php");
+include_once("../../includes/functions.php");
 // include_once("includes/session.php");
-include_once("includes/db.php");
+include_once("../../includes/db.php");
 
 ?>
 
@@ -38,12 +38,12 @@ include_once("includes/db.php");
 
 					<table border="1" width="100%">
 						<tr>
-							<th width="10%">ID</td>
+							<th width="5%">ID</td>
 							<th width="20%">Title</td>
                             <th width="20%">Description</td>
-                            <th width="20%">text</td>
-                            <th width="20%">user_id</td>
-                            <th width="20%">category_id</td>
+                            <th width="25%">text</td>
+                            <th width="5%">user_id</td>
+                            <th width="5%">category_id</td>
 						</tr>
 						<?php
 						try {
@@ -70,10 +70,6 @@ include_once("includes/db.php");
 					</table>
 				</div>
 			</div>
-
-
-
-
 		</div>
 		<!-- /row -->
 	</div>
