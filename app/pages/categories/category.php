@@ -61,13 +61,52 @@ include_once("../../includes/db.php");
 					</table>
 				</div>
 			</div>
-
-
-
-
 		</div>
 		<!-- /row -->
 	</div>
 	<!-- /container -->
 </div>
 <!-- /section -->
+
+<body>
+    <form>
+        <select name="cat" onchange="showCategory(this.value)" style="height:50px;">
+            <option value="">Выберите категорию</option>
+            <?php
+            $result = mysqli_query($db, "SELECT * FROM category");
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "<option value='" . $row['id'] . "'>";
+                echo $row['title'];
+                echo "</option>";
+            }
+            ?>
+        </select>
+    </form>
+
+    <div id="CategoryInfo">
+
+    </div>
+
+
+    <script type="text/javascript">
+        function showCategory(category_id) {
+            var xmlhttp;
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    document.getElementById("CategoryInfo").innerHTML = xmlhttp.responseText;
+                }
+            }
+
+            xmlhttp.open("GET", "searching.php?q=" + category_id, true);
+            xmlhttp.send();
+
+        }
+    </script>
+
+</body>
