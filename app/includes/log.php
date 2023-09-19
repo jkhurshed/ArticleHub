@@ -4,6 +4,7 @@ include_once('functions.php');
 
 class Log
 {
+    private $ip;
     private $error;
     private $errorCode;
     private $file;
@@ -33,13 +34,13 @@ class Log
         $logDate = date('d.m.Y H:i:s');
 
 
-        $logText = $logDate . '\n'
-            . 'IP: ' . $this->ip . '\n'
-            . 'File: ' . $this->file  . '\n'
-            . 'Line: ' . $this->line . '\n'
-            . 'Error Code: ' . $this->errorCode . '\n'
-            . 'Error: ' . $this->error . '\n'
-            . 'Trace: ' . $this->trace . '\n';
+        $logText = $logDate . "\n"
+            . 'IP: ' . $this->ip . "\n"
+            . 'File: ' . $this->file  . "\n"
+            . 'Line: ' . $this->line . "\n"
+            . 'Error Code: ' . $this->errorCode . "\n"
+            . 'Error: ' . $this->error . "\n"
+            . 'Trace: ' . $this->trace . "\n";
 
         if (flock($logFile, LOCK_EX)) {
             fputs($logFile, $logText);
@@ -48,26 +49,4 @@ class Log
 
         fclose($logFile);
     }
-
-
-
-
-
-
-
-    // echo $a->getMessage();
-    // echo '<br>';
-    // echo $a->getCode();
-    // echo '<br>';
-    // echo $a->getFile();
-    // echo '<br>';
-    // echo $a->getLine();
-    // echo '<br>';
-    // echo '<pre>';
-    // print_r($a->getTrace());
-    // echo '</pre>';
-    // echo '<br>';
-    // echo $a->getTraceAsString();
-
-
 }

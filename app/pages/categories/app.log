@@ -1,9 +1,9 @@
-17.09.2023 23:11:18\nFile: /home/khurshed/Desktop/code/php/compose-project/app/includes/db.php\nLine: 10\nError Code: 1045\nError: Access denied for user 'admina'@'localhost' (using password: YES)\nTrace: #0 /home/khurshed/Desktop/code/php/compose-project/app/includes/db.php(10): mysqli->__construct()
-#1 /home/khurshed/Desktop/code/php/compose-project/app/pages/categories/update_category.php(5): include_once('...')
-#2 {main}\n17.09.2023 23:17:07\nFile: /home/khurshed/Desktop/code/php/compose-project/app/includes/db.php\nLine: 10\nError Code: 1045\nError: Access denied for user 'admina'@'localhost' (using password: YES)\nTrace: #0 /home/khurshed/Desktop/code/php/compose-project/app/includes/db.php(10): mysqli->__construct()
+19.09.2023 08:26:23
+IP: 127.0.0.1
+File: /home/khurshed/Desktop/code/php/compose-project/app/includes/db.php
+Line: 10
+Error Code: 1045
+Error: Access denied for user 'admins'@'localhost' (using password: YES)
+Trace: #0 /home/khurshed/Desktop/code/php/compose-project/app/includes/db.php(10): mysqli->__construct()
 #1 /home/khurshed/Desktop/code/php/compose-project/app/pages/categories/category.php(5): include_once('...')
-#2 {main}\n18.09.2023 00:54:37\nFile: /home/khurshed/Desktop/code/php/compose-project/app/includes/db.php\nLine: 10\nError Code: 1045\nError: Access denied for user 'admins'@'localhost' (using password: YES)\nTrace: #0 /home/khurshed/Desktop/code/php/compose-project/app/includes/db.php(10): mysqli->__construct()
-#1 /home/khurshed/Desktop/code/php/compose-project/app/pages/categories/category.php(5): include_once('...')
-#2 {main}\n18.09.2023 00:57:17\nIP: 127.0.0.1\nFile: /home/khurshed/Desktop/code/php/compose-project/app/includes/db.php\nLine: 10\nError Code: 1045\nError: Access denied for user 'admins'@'localhost' (using password: YES)\nTrace: #0 /home/khurshed/Desktop/code/php/compose-project/app/includes/db.php(10): mysqli->__construct()
-#1 /home/khurshed/Desktop/code/php/compose-project/app/pages/categories/category.php(5): include_once('...')
-#2 {main}\n
+#2 {main}
