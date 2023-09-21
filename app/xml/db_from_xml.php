@@ -5,20 +5,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['xml_file'])) {
         $xml = simplexml_load_file($xml_file);
         if ($xml) {
             try {
-                $pdo = new PDO('mysql:host=localhost;dbname=animesite', 'root', 'root');
-                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $db = new mysqli('mysql:host=localhost;dbname=compose', 'admin', 'testpass');
                 foreach ($xml->record as $record) {
-                    $name = (string)$record->name;
+                    $title = (string)$record->title;
                     $createDate = (string)$record->createDate;
                     $updateDate = !empty($record->updateDate) ? (string)$record->updateDate : null; 
-                    $stmt = $pdo->prepare("INSERT INTO test (name, createDate, updateDate) VALUES (:name, :createDate, :updateDate)");
-                    $stmt->bindParam(':name', $name);
-                    $stmt->bindParam(':createDate', $createDate);
-                    $stmt->bindParam(':updateDate', $updateDate, PDO::PARAM_NULL); 
+                    $stmt = $db->prepare("INSERT INTO category (title) VALUES (?)");
+                    $stmt->bind_param('s', $title);
                     $stmt->execute();
                 }
                 echo "Данные успешно импортированы в базу данных.";
-            } catch (PDOException $e) {
+            } catch (Exception $e) {
                 echo 'Ошибка: ' . $e->getMessage();
             }
         } else {
@@ -27,6 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['xml_file'])) {
     } else {
         echo "XML-файл не найден.";
     }
-    header('Location: ../index.php');
+    header('Location: ../main.php');
 }
 ?>
