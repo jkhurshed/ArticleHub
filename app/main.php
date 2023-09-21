@@ -31,17 +31,28 @@ include_once("includes/db.php");
 		<![endif]-->
 
     </head>
-	<body id="LoginForm">
-		<div class="container">
-			<h1 class="form-heading">Login using cookies and session</h1>
-		</div>
-		<style>
-			body#LoginForm{ background-image:url("img/avatar.png");
-				background-repeat:no-repeat;
-				background-position:center;
-				background-size:cover;
-				padding:10px;}
-			.form-heading { color:#fff; font-size:23px; text-align:center; }
-		</style>
+	<body>
+		<a href="pages/authentication/login.php">Login</a>
+		<a href="pages/authentication/register.php">Sign up</a>
+		<br>
+		<?php
+			try {
+				$sql = "SELECT p.id, p.title, p.description, p.text, 
+							   p.date_created, u.login, c.title as category 
+							FROM post p LEFT JOIN users u ON p.user_id = u.id 
+							LEFT JOIN category c ON p.category_id = c.id;";
+				$result = $db->query($sql);
+				while ($row = $result->fetch_assoc()) {
+					echo '<tr>';
+					echo '<td>' . $row['login'] . ' in the ' . $row['category'];
+					echo '<br>';
+					echo '<td>' . $row['description'] . '</td>';
+					echo '<br>';
+				}
+			} catch (Exception $e) {
+				echo $e->getMessage();
+			}
+		?>
 	</body>
+
 </html>
