@@ -25,5 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['xml_file'])) {
         echo "XML-файл не найден.";
     }
     header('Location: ../main.php');
+    
 }
 ?>
