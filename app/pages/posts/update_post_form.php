@@ -32,8 +32,6 @@ include_once("../../includes/db.php");
 		<!-- row -->
 		<div class="row">
 			<?php if (isset($_GET['id'])) : ?>
-				echo "ok";
-
 				<?php
 
 				if (!empty($_GET['id'])) {
@@ -49,9 +47,8 @@ include_once("../../includes/db.php");
 							$result = $sql->get_result();
 
 							if ($result->num_rows > 0) {
-							$row = $result->fetch_assoc();
-							 ?>
-							
+								$row = $result->fetch_assoc();
+							?>
 							<div class="col-md-5 col-md-offset-1">
 								<div class="section-row">
 									<h3>Edit category</h3>
@@ -60,8 +57,8 @@ include_once("../../includes/db.php");
 											<div class="col-md-7">
 												<div class="form-group">
 													<span>Title</span>
-													<input class="input" type="text" name="title" value="<?= $row['title']; ?>">
 													<input class="input" type="hidden" name="id" value="<?= $row['id']; ?>">
+													<input class="input" type="text" name="title" value="<?= $row['title']; ?>">
 												</div>
 											</div>
 											<div class="col-md-7">
@@ -128,7 +125,6 @@ include_once("../../includes/db.php");
 					} else {
 						echo "Error executing the query" . $db->error . "sql error: " . $sql->error;
 					}
-					$sql->close();
 					$db->close();
 					} catch (Exception $e) {
 						echo $e->getMessage();

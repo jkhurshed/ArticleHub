@@ -34,7 +34,7 @@ include_once("../../includes/db.php");
 				<div class="section-row">
 					<h3>Posts</h3>
 
-					<a href="/add_post.php">Add post</a>
+					<a href="add_post.php">Add post</a>
 
 					<table border="1" width="100%">
 						<tr>
@@ -58,9 +58,9 @@ include_once("../../includes/db.php");
                                 echo '<td>' . $row['text'] . '</td>';
                                 echo '<td>' . $row['user_id'] . '</td>';
                                 echo '<td>' . $row['category_id'] . '</td>';
-                                echo '<td><a href="update_post.php?id=' . $row['id'] . 
-									'">Редактировать</a> | <a href="delete_post.php?id=' . 
-									$row['id'] . '">Удалить</a></td>';
+                                echo '<td><a href="update_post_form.php?id=' . $row['id'] . 
+									'">Edit</a> | <a href="delete_post.php?id=' . 
+									$row['id'] . '">Delete</a></td>';
 								echo '</tr>';
 							}
 						} catch (mysqli_sql_exception $e) {
