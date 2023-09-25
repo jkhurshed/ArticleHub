@@ -15,9 +15,10 @@ if (!empty($id)) {
         $sql = $db->prepare($query);
         $sql->bind_param("i", $id);
 
-        $sql->execute();
-        // $_SESSION['success'] = 'Категория успешна удалена.';
-        
+        if (!$sql->execute()) {
+            throw new Exception("Error executing the query");
+        }
+
         $sql->close();
         $db->close();
 
