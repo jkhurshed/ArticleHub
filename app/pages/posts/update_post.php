@@ -13,22 +13,19 @@ if (isset($_POST['category_id'])) $category_id = $_POST['category_id'];
 
 if (!empty($title)) {
     try {
-
         $query = "UPDATE post SET title = ?, description = ?, text = ?, user_id = ?, category_id = ? WHERE id = ?";
-
         $sql = $db->prepare($query);
         $sql->bind_param("sssiii", $title, $description, $text, $user_id, $category_id, $id);
 
-        if ($sql->execute()) {
-            header('Location: post.php');
-        } else {
-            echo "Error executing the query";
+        if (!$sql->execute()) {
+            throw new Exception("Error executing the query");
         }
 
         $sql->close();
         $db->close();
 
-         } catch (Exception $e) {
+        header('Location: post.php');
+    } catch (Exception $e) {
         echo $e->getMessage();
     }
 }
